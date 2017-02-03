@@ -12,11 +12,11 @@ def download(url, file_name):
         file.write(response.content)
 
 
-PAGE = requests.get('https://archive.org/download/44_0_20071010031116_crawl100-c')
+PAGE = requests.get('http://repoforge.org/use/')
 TREE = html.fromstring(PAGE.content)
 
-LOG_NAME = TREE.xpath('//*[@id="wrap"]/div[2]/pre/a[2]/text()')
-LOG_URL = TREE.xpath('//*[@id="wrap"]/div[2]/pre/a[2]/@href')
+LOG_NAME = TREE.xpath(".//*[@id='content']/ul[1]/li[1]/a/text()")
+LOG_URL = TREE.xpath(".//*[@id='content']/ul[1]/li[1]/a/@href").pop()
 
 
 print("log name : ", LOG_NAME)
